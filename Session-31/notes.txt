@@ -1,0 +1,187 @@
+What is SQL?
+=============
+
+Ans: SQL(Structured Query Language) is a programming language used for managing and manipulating data in relational databases.
+     It allows you to insert, update, retrieve, and delete data in a database. It is widely used for data management in
+     many applications, websites, and businesses. In simple terms, SQL is used to communicate with and control databases.
+
+
+Types of SQL Commands
+======================
+
+                                      SQL
+                           Structured Query Language
+                                      │
+             ┌────────────────────────┼────────────────────────┐
+             │                        │                        │
+            DDL                      DML                      TCL
+     Data Definition Language  Data Manipulation Language  Transaction Control
+             │                        │                    Language
+             │                        │                        │
+      ┌──────┼──────┐          ┌──────┼──────┬──────┐    ┌────┴────┐
+      │      │      │          │      │      │      │    │         │
+   CREATE  ALTER   DROP      INSERT UPDATE DELETE SELECT COMMIT  ROLLBACK
+      │      │      │          │      │      │      │    │         │
+      │      │      │          │      │      │      │    │         │
+   Create  Modify  Delete    Create  Modify Delete Retrieve Save      Undo
+    new   existing existing   new    data    data   data  database   changes
+ database database database   rows    in      from   from  changes    that are
+ objects  objects  objects     in    tables  tables tables and end     not
+                               tables                 transaction  committed
+             │
+          TRUNCATE
+             │
+       Remove all rows
+         from table
+
+
+                         DCL
+                  Data Control Language
+                         │
+                    ┌────┴────┐
+                    │         │
+                  GRANT     REVOKE
+                    │         │
+               Provide      Withdraw
+             access rights  access rights
+              on database   on database     
+
+
+DDL commands for Databases
+===========================
+
+CREATE -> CREATE DATABASE IF NOT EXISTS DatabaseName
+DROP -> DROP DATABASE IF EXISTS DtabaseName
+
+DDL commands for Tables
+=======================
+
+CREATE -> CREATE TABLE TableName (
+    column1 datatype,
+    column2 datatype
+);
+TRUNCATE -> TRUNCATE TABLE TableName;
+DROP -> DROP TABLE IF EXISTS TableName;
+
+
+Data Integrity
+==============
+
+Data Integrity in databases refers to the accuracy, completeness, and consistency of the data stored in a database.
+
+It is a measure of the reliability and trustworthiness of data and ensures that the data is protected from errors, corruption, and unauthorized changes.
+
+Methods to Ensure Data Integrity
+                        DATA INTEGRITY
+                              │
+              ┌───────────────┼───────────────┐
+              │               │               │
+         Constraints     Transactions    Normalization
+              │               │               │
+        Apply rules       Operations      Minimize data
+       and conditions    treated as one    redundancy &
+        on the data       unit of work     ensure data
+                                           consistency
+1. Constraints
+
+Constraints are rules or conditions that must be met for data to be inserted, updated, or deleted in a database table.
+
+They are used to enforce the integrity of data and prevent data from becoming inconsistent or corrupted.
+
+2. Transactions
+
+A Transaction is a sequence of database operations that are treated as a single unit of work.
+
+3. Normalization
+
+Normalization is a database design technique that minimizes data redundancy and ensures data consistency by organizing data into separate tables.
+
+Quick Revision: Data Integrity = Accuracy + Completeness + Consistency + Reliability of Data
+
+Constraints in MySQL
+====================
+
+Constraints are rules or conditions that must be satisfied when data is inserted, updated, or deleted in a database table.
+
+They are used to maintain data integrity and prevent data from becoming inconsistent or corrupted.
+
+                    CONSTRAINTS
+                         │
+       ┌─────────────────┼─────────────────┐
+       │                 │                 │
+    NOT NULL           UNIQUE         PRIMARY KEY
+       │                 │                 │
+ Prevents NULL      Prevents duplicate  Uniquely identifies
+    values               values          each row
+
+       ┌─────────────────┼─────────────────┐
+       │                 │                 │
+ AUTO_INCREMENT        CHECK            DEFAULT
+       │                 │                 │
+Automatically       Validates data    Provides a default
+generates values    using condition        value
+
+                         │
+                    FOREIGN KEY
+                         │
+                  Creates relationship
+                   between two tables
+Types of Constraints
+NOT NULL
+UNIQUE
+PRIMARY KEY
+AUTO_INCREMENT
+CHECK
+DEFAULT
+FOREIGN KEY
+Referential Actions
+
+Referential actions specify what should happen to related data when a referenced row is updated or deleted.
+
+RESTRICT
+CASCADE
+SET NULL
+SET DEFAULT
+
+Quick Revision: Constraints = Rules applied to table columns to maintain Data Integrity.
+
+                    REFERENTIAL ACTIONS
+                          │
+        ┌─────────────────┼─────────────────┐
+        │                 │                 │
+     RESTRICT          CASCADE           SET NULL
+        │                 │                 │
+ Parent row ko       Parent ke saath    Foreign Key ko
+ delete/update       child rows bhi      NULL kar do
+ karne se roko       change/delete
+                          │
+                      SET DEFAULT
+                          │
+                   Foreign Key mein
+                   default value set
+
+ALTER TABLE Command
+====================
+
+The ALTER TABLE statement in SQL is used to modify the structure of an existing table. Some of the things that can be done using the ALTER TABLE statement include:
+
+Adding new columns
+Deleting existing columns
+Modifying existing columns
+                       ALTER TABLE
+                            │
+            ┌───────────────┼───────────────┐
+            │               │               │
+       ADD COLUMN      DROP COLUMN      MODIFY COLUMN
+            │               │               │
+        Add a new        Delete an         Modify an
+          column      existing column   existing column
+
+In simple words: ALTER TABLE is used to make changes to the structure of a table that has already been created.
+
+Editing and Deleting Constraints
+=================================
+
+1. Add
+2. Delete
+3. Edit -> nhi hosakta , iske badle indirect tarika hai pehle delete karo phir add karo.
