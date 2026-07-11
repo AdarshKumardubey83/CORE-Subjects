@@ -1,0 +1,436 @@
+Database
+========
+
+A database is a shared collection of logically related data and a description of that data, designed to meet the information needs of an organization.
+
+Uses of Database
+
+1. Data Storage:
+A database is used to store large amounts of structured data, making it easily accessible, searchable, and retrievable.
+
+2. Data Analysis:
+A database can be used to perform complex data analysis, generate reports, and provide insights into the data.
+
+3. Record Keeping:
+A database is used to keep track of important records, such as financial transactions, customer information, and inventory levels.
+
+4. Web Applications:
+Databases are an essential component of many web applications, providing dynamic content and user management.
+
+Properties of an Ideal Database
+===============================
+
+1. Integrity -> accurate+consistency
+2. Availability -> 24hours
+3. Security 
+4. Independent of Application
+5. Concurrency
+
+Types of Databases
+===================
+
+1. Relational Databases:
+Also known as SQL databases, these databases use a relational model to organize data into tables with rows and columns.
+
+2. NoSQL Databases:
+These databases are designed to handle large amounts of unstructured or semi-structured data, such as documents, images, or videos.
+Example: MongoDB
+
+3. Column Databases:
+These databases store data in columns rather than rows, making them suitable for data warehousing and analytical applications.
+Examples: Amazon Redshift, Google BigQuery
+
+4. Graph Databases:
+These databases are used to store and query graph-structured data, such as social network connections or recommendation systems.
+Examples: Neo4j, Amazon Neptune
+
+5. Key-Value Databases:
+These databases store data as a collection of keys and values, making them suitable for caching and simple data storage needs.
+Examples: Redis, Amazon DynamoDB
+
+Relational Databases
+====================
+
+Also known as SQL databases, these databases use a relational model to organize data into tables with rows and columns.
+
+Important Terms
+
+1. Attributes / Columns / Fields:
+The columns of a table are called attributes, columns, or fields.
+
+Example: ID, ENAME, SALARY, BONUS, DEPT
+
+2. Rows / Records / Tuples:
+Each row of a table represents a single record and is called a row, record, or tuple.
+
+3. Domain:
+The set of allowed values for an attribute is called its domain.
+
+Example: The domain of DEPT can be {ICP, ETA, IVS}.
+
+4. Cardinality of a Relation:
+The total number of rows/records/tuples in a table is called the cardinality of the relation.
+
+Cardinality = Number of Rows
+
+In the given table, Cardinality = 4.
+
+5. Degree of a Relation:
+The total number of attributes/columns/fields in a table is called the degree of the relation.
+
+Degree = Number of Columns
+
+In the given table, Degree = 5.
+
+6. NULL:
+NULL represents a missing, unknown, or unavailable value in a table.
+
+Relation Representation
+
+A relation is generally represented as:                    
+
+            EMPLOYEE TABLE
+
+
+     Attributes / Columns / Fields
+                   ↓
+    ┌────┬─────────┬────────┬───────┬──────┐
+    │ ID │ ENAME   │ SALARY │ BONUS │ DEPT │
+    ├────┼─────────┼────────┼───────┼──────┤
+ →  │ 1  │ James   │ 75000  │ 1000  │ ICP  │
+ →  │ 2  │ Ethan   │ 90000  │ 2000  │ ETA  │
+ →  │ 3  │ Emily   │ 25000  │ NULL  │ ETA  │
+ →  │ 4  │ Jack    │ 30000  │ 1000  │ ETA  │
+    └────┴─────────┴────────┴───────┴──────┘
+     ↑
+ Rows / Records / Tuples
+
+
+ Number of Rows = Cardinality = 4
+
+ Number of Columns = Degree = 5
+
+ Domain of DEPT = {ICP, ETA, IVS}
+
+ NULL = Missing / Unknown Value
+
+Employee(ID, ENAME, SALARY, BONUS, DEPT)
+
+What is a DBMS?
+===============
+
+A Database Management System (DBMS) is a software system that provides the interfaces and tools needed to store, organize, and manage data in a database.
+
+A DBMS acts as an intermediary (middle layer) between the database and the applications or users that access the data stored in the database.
+
+
+             Users
+               ↓
+      ┌───────────────────┐
+      │   Applications    │
+      │  App 1  │  App 2  │
+      └───────────────────┘
+               ↓
+      ┌───────────────────┐
+      │       DBMS        │
+      │     Database      │
+      └───────────────────┘
+               ↓
+      ┌───────────────────┐
+      │ Operating System  │
+      └───────────────────┘
+               ↓
+      ┌───────────────────┐
+      │ HDD / SSD Storage │
+      └───────────────────┘
+
+
+Functions of DBMS
+==================
+
+1. Data Management:
+DBMS is used to store, retrieve, and modify data.
+
+2. Integrity:
+DBMS maintains the accuracy and consistency of data.
+
+3. Concurrency:
+DBMS allows simultaneous data access by multiple users.
+
+4. Transaction:
+A modification to the database must either be completely successful or must not happen at all.
+
+5. Security:
+DBMS ensures that data can be accessed only by authorized users.
+
+6. Utilities:
+DBMS provides additional facilities such as data import/export, user management, backup, and logging.
+
+
+Data Management → Store, Retrieve, Modify
+Integrity       → Accuracy & Consistency
+Concurrency     → Multiple Users Simultaneously
+Transaction     → Complete Success or Complete Failure
+Security        → Authorized Access Only
+Utilities       → Import/Export, Backup, Logging
+
+
+Database Keys
+===============
+
+A key in a database is an attribute or set of attributes that uniquely identifies a tuple (row) in a table.
+
+Keys help maintain data integrity and reliability, enforce uniqueness, and establish relationships between tables.
+
+1. Super Key(janta)
+
+A Super Key is an attribute or combination of attributes that can uniquely identify each row in a table.
+
+Example, suppose:
+
+Student(Roll_No, Name, Branch, Email)
+
+If Roll_No and Email are unique, possible Super Keys are:
+
+{Roll_No}
+{Email}
+{Roll_No, Name}
+{Roll_No, Branch}
+{Roll_No, Email}
+{Email, Name}
+{Roll_No, Name, Branch}
+...
+
+Important: A Super Key can contain extra/unnecessary attributes.
+
+2. Candidate Key(umidwar)
+
+A Candidate Key is a minimal Super Key, meaning it uniquely identifies each row and contains no unnecessary attributes.
+
+For the above table:
+
+{Roll_No} → Candidate Key
+{Email}   → Candidate Key
+
+But:
+
+{Roll_No, Name} ❌
+
+is not a Candidate Key because Name is unnecessary; Roll_No alone can uniquely identify the row.
+
+Candidate Key = Minimal Super Key
+
+3. Primary Key(vijeta)
+
+A Primary Key is one Candidate Key selected to uniquely identify each row in the table.
+
+Suppose Candidate Keys are:
+
+{Roll_No}
+{Email}
+
+We can choose:
+
+Roll_No → Primary Key
+
+A Primary Key:
+
+must be unique
+cannot contain NULL
+only one Primary Key can be chosen for a table
+
+4. Alternate Key
+
+Candidate Keys that are not selected as the Primary Key are called Alternate Keys.
+
+Example:
+
+Candidate Keys = Roll_No, Email
+
+Primary Key   = Roll_No
+Alternate Key = Email
+
+5. Composite Key
+
+A key made up of two or more attributes is called a Composite Key.
+
+Example:
+
+Student_Course(Student_ID, Course_ID)
+
+Suppose neither Student_ID nor Course_ID alone uniquely identifies a row, but together they do:
+
+(Student_ID, Course_ID) → Composite Key
+
+6. Surrogate Key(majboory primary key): jab kisi table mein koi primary key ban hi na paye toh ek naya column apne marzi se add karte hai.
+Ex: name|branch|cgpa
+
+A Surrogate Key is an artificially generated key that has no business meaning and is used to uniquely identify rows.
+
+Example:
+
+Customer_ID = 101, 102, 103...
+
+Here Customer_ID may be automatically generated by the system.
+
+
+7. Foreign Key
+
+A Foreign Key is an attribute in one table that refers to the Primary Key of another table. It is used to establish a relationship between tables.
+
+DEPARTMENT TABLE
+
+Dept_ID (Primary Key)
+    ↑
+    │
+    │ Relationship
+    │
+Dept_ID (Foreign Key)
+
+EMPLOYEE TABLE
+Quick Revision
+Super Key     → Uniquely identifies rows; may have extra attributes
+
+Candidate Key → Minimal Super Key
+
+Primary Key   → Selected Candidate Key
+
+Alternate Key → Candidate Key not selected as Primary Key
+
+Composite Key → Key containing 2 or more attributes
+
+Surrogate Key → Artificially generated key
+
+Foreign Key   → Establishes relationship between tables
+Most Important Relationship
+          SUPER KEYS
+        ┌─────────────┐
+        │             │
+        │ CANDIDATE   │
+        │    KEYS     │
+        │  ┌───────┐  │
+        │  │PRIMARY│  │
+        │  │  KEY  │  │
+        │  └───────┘  │
+        │             │
+        └─────────────┘
+
+Core concept: Every Candidate Key is a Super Key, but every Super Key is not a Candidate Key. The Primary Key is one of the Candidate Keys.
+
+Cardinality of Relationships
+=============================
+
+Cardinality in database relationships refers to the number of instances of one entity that can be associated with instances of another entity.
+
+There are mainly 3 types of relationships:
+
+1. One-to-One Relationship (1:1)
+
+One instance of an entity is associated with only one instance of another entity.
+
+Person  ──────────  Driving License
+   1                     1
+
+Example: Person → Driving License Number
+
+One person has one driving license, and one driving license belongs to one person.
+
+2. One-to-Many Relationship (1:N)
+
+One instance of an entity can be associated with multiple instances of another entity.
+
+             ┌──→ Student 1
+College      ├──→ Student 2
+Branch       ├──→ Student 3
+             └──→ Student 4
+   1                 N
+
+Example: College Branch → Students
+
+One branch can have many students, but one student belongs to one branch.
+
+Another example:
+
+Restaurant ─────→ Orders
+
+     1              N
+
+One restaurant can receive many orders.
+
+3. Many-to-Many Relationship (M:N)
+
+Multiple instances of one entity can be associated with multiple instances of another entity.
+
+Students                Courses
+
+Student 1 ───────────→ Course 1
+    │    ╲             ↗
+    │      ╲         ↗
+    ↓        ╲     ↗
+Student 2 ───────────→ Course 2
+
+    M                     N
+
+
+Example: Students → Courses
+
+One student can enroll in multiple courses, and one course can have multiple students.
+
+Examples from the Slide
+
+Person → Driving License Number = 1:1
+
+College Branch → Students       = 1:N
+
+Restaurant → Orders             = 1:N
+
+Restaurant → Menu Items         = 1:N
+
+Students → Courses              = M:N
+
+Quick Revision
+1:1 → One to One
+Example: Person ↔ Driving License
+
+1:N → One to Many
+Example: Branch → Students
+
+M:N → Many to Many
+Example: Students ↔ Courses
+
+for one to one : you need 1 table
+for one to many: you need 2 tables
+for many to many: you need 3 tables
+
+Drawbacks of Databases
+========================
+
+1. Complexity:
+Setting up and maintaining a database can be complex and time-consuming, especially for large and complex systems.
+
+2. Cost:
+The cost of setting up and maintaining a database, including hardware, software, and personnel, can be high.
+
+3. Scalability:
+As the amount of data stored in a database grows, it can become more difficult to manage, leading to performance and scalability issues.
+
+4. Data Integrity:
+Ensuring the accuracy and consistency of data can be challenging, especially when multiple users update the data simultaneously.
+
+5. Security:
+Protecting a database from unauthorized access and cyberattacks can be difficult.
+
+6. Data Migration:
+Moving data from one database to another or upgrading to a new database can be a complex and time-consuming process.
+
+7. Flexibility:
+The structure of a database can be rigid, making it difficult to adapt to changing requirements or new types of data.
+
+Quick Revision
+Complexity     → Difficult to set up and maintain
+Cost           → Hardware, software & personnel expenses
+Scalability    → Difficulty managing growing data
+Data Integrity → Maintaining accuracy & consistency
+Security       → Protection from unauthorized access
+Data Migration → Difficult to move/upgrade data
+Flexibility    → Difficult to adapt to changes
