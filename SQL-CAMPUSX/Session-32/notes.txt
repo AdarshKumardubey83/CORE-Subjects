@@ -1,0 +1,44 @@
+SQL Functions
+                    SQL FUNCTIONS
+                         │
+          ┌──────────────┴──────────────┐
+          │                             │
+      Built-in                     User Defined (UDF)
+          │
+     ┌────┴────┐
+     │         │
+  Scalar   Aggregate
+1. Built-in Functions
+
+Functions already provided by SQL.
+
+Types
+A. Scalar Functions
+Work on one value (one row).
+Return one value.
+
+Examples:
+
+UPPER()
+LOWER()
+LENGTH()
+ROUND()
+NOW()
+
+Example
+
+SELECT UPPER(name)
+FROM Student;
+B. Aggregate Functions
+Work on multiple rows.
+Return one summary value.
+CGPA
+8.75
+9.12
+6.60
+ │
+ ▼
+AVG()
+ │
+ ▼
+8.16
